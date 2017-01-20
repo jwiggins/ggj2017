@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StemModule : MonoBehaviour {
+public class StemModule : PlantModule {
 
 	// Use this for initialization
 	void Start () {

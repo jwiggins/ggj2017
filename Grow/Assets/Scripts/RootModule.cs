@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RootModule : MonoBehaviour {
+public class RootModule : PlantModule {
 
 	// Use this for initialization
 	void Start () {

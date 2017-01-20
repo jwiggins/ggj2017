@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WinterSeason : MonoBehaviour {
+public class WinterSeason : Season {
 
 	// Use this for initialization
 	void Start () {
