@@ -1,0 +1,59 @@
+World
+- Plant
+    - Resource
+        + Water
+        + Light
+    - Module
+        + Root
+        + Stem
+        + Leaf
+        + Flower
+- Season
+    + Spring
+    + Summer
+    + Fall
+    + Winter
+- Weather
+    + Rain
+    + Snow
+    + Drought
+    + Wind
+
+
+
+World:
+* Plant[s]
+* Month
+* Season
+* Weather
+
+
+Plant:
+* Resources
+* Modules
+
+
+Modules:
+* Type
+* Health
+* Modules (recursive. It's a tree)
+* Attachment points
+  - Deformable
+  - Non-Deformable
+* Resources generated
+* Resistance to stress
+  - Gravity
+  - Temperature
+  - Animals
+  - Other plants  (optional)
+
+Season
+* Type
+* Temperature range
+* Precipitation range
+  - Per type
+* Disaster probability
+  - Per type
+
+
+
