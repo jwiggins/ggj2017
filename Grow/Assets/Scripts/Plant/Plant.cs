@@ -71,6 +71,11 @@ public class Plant : MonoBehaviour {
 
     public BranchMenu BranchMenu { get { return this._branchMenu; } }
 
+    public int energy
+    {
+        get { return this._energy; }
+    }
+
     // Use this for initialization
     void Start () {
         this._core = GameObject.Instantiate(this._seed);
