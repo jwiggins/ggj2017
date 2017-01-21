@@ -25,7 +25,7 @@ public class World : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        _month = 1;
+        _month = 4; // Start in the Spring
         _weatherEffect = null;
         _adjustToMonth();
     }
@@ -68,7 +68,7 @@ public class World : MonoBehaviour {
     private void _adjustLight() {
         // Camera is looking towards increasing Z!
         float height = kSunDistance * Mathf.Sin(Mathf.Deg2Rad * kSunAngles[_month-1]);
-        Vector3 position = _plant.transform.position + new Vector3(0, height, -kSunDistance);
+        Vector3 position = _plant.transform.position + new Vector3(5.0f, height, kSunDistance);
         Vector3 relativePos = _plant.transform.position - position;
         Quaternion rotation = Quaternion.LookRotation(relativePos);
 
