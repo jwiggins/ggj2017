@@ -29,6 +29,24 @@ public class AttachmentPoint : MonoBehaviour{
     {
         get { return this.RootModule.Plant; }
     }
+    public int ThicknessLevel
+    {
+        get { return this._thicknessLevel; }
+        set
+        {
+            int maxThickness = 4;
+            int newThickness = Mathf.Clamp(value, 0, maxThickness);
+            if (newThickness > this.ThicknessLevel)
+                this._thicknessLevel = newThickness;
+            float thicknessValue = newThickness / (float)(Mathf.Max(1, maxThickness));
+            SkinnedMeshRenderer skinnedRoot = this.RootModule.SkinnedMeshRenderer;
+            if (skinnedRoot != null)
+                skinnedRoot.SetBlendShapeWeight(0, thicknessValue);
+            SkinnedMeshRenderer skinnedAttached = this.RootModule.SkinnedMeshRenderer;
+            if(skinnedAttached!=null)
+                skinnedAttached.SetBlendShapeWeight(0, thicknessValue);
+        }
+    }
     #endregion
 
     #region public functions

@@ -166,6 +166,7 @@ MonoBehaviour:
   _waterGathering: 0
   _attachmentPoints:
   - {fileID: 114864454113949822}
+  _renderer: {fileID: 137270859899174516}
 --- !u!114 &114864454113949822
 MonoBehaviour:
   m_ObjectHideFlags: 1
