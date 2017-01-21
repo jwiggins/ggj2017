@@ -26,11 +26,6 @@ public class Weather {
     [Range(-1,1)]
     private float _moisture;
 
-    public float gravity {
-        get {
-            return _gravity;
-        }
-    }
 
     public float moisture {
         get {

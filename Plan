@@ -56,4 +56,14 @@ Season
   - Per type
 
 
-
+Soil Moisture: 0 -> 100
+Soil Nutrition: 0 -> 100
+Light: Constant amount based on month
+Temperature: min + range * season weather factor
+Soil moisture adjustment: air moisture * current moisture
+Soil nutrition adjustment: Simple cost per module grown
+Energy:
+  - Small amount provided by roots (just enough for leaves)
+  - Larger amount provided by leaves
+  - Leaf and Flower growth requires minimum Energy
+  - Amount based on size of plant & soil moisture lost per turn

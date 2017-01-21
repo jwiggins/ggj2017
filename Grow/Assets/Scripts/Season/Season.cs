@@ -24,7 +24,20 @@ public class Season {
     private Weather[] _weathers;
     private Weather _weather;
 
-    public float moisture {
+    public int moistureGain {
+        get {
+            switch (_weather.type) {
+                case Weather.WeatherEnum.RAIN:
+                    return 20;
+                case Weather.WeatherEnum.SNOW:
+                    return 10;
+                default:
+                    return 0;
+            }
+        }
+    }
+
+    public float moistureLoss {
         get {
             return _weather.moisture;
         }
