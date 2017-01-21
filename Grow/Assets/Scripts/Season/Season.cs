@@ -38,6 +38,12 @@ public class Season {
         }
     }
 
+    public Weather.WeatherEnum weatherType {
+        get {
+            return _weather.type;
+        }
+    }
+
     public void ChooseWeather() {
         int choice = (int)Random.Range(0f, (float)_weathers.Length);
         _weather = _weathers[choice];

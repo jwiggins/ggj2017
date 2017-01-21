@@ -4,13 +4,14 @@ using UnityEngine;
 
 [System.Serializable]
 public class Weather {
-    private enum WeatherEnum
+    public enum WeatherEnum
     {
         RAIN,
         WIND,
         DROUGHT,
         SNOW
     }
+
     [SerializeField]
     private string _name;
     [SerializeField]
@@ -40,6 +41,12 @@ public class Weather {
     public float temperature {
         get {
             return _temperature;
+        }
+    }
+
+    public WeatherEnum type {
+        get {
+            return _weather;
         }
     }
 
