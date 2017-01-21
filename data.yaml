@@ -1,0 +1,83 @@
+---
+Object:
+  _seasons:
+  - _name: Spring
+    _minTemperature: -5
+    _maxTemperature: 25
+    _weathers:
+    - _name: Rain
+      _temperature: -0.5
+      _moisture: 0
+      _probability: 0.45
+    - _name: Wind
+      _temperature: -0.25
+      _moisture: 0
+      _probability: 0.45
+    - _name: Drought
+      _temperature: 0.1
+      _moisture: -0.75
+      _probability: 0.05
+    - _name: Snow
+      _temperature: -1
+      _moisture: 0
+      _probability: 0.05
+  - _name: Summer
+    _minTemperature: 15
+    _maxTemperature: 45
+    _weathers:
+    - _name: Rain
+      _temperature: 0.2
+      _moisture: 0.5
+      _probability: 0.35
+    - _name: Wind
+      _temperature: 0.5
+      _moisture: -0.25
+      _probability: 0.35
+    - _name: Drought
+      _temperature: 1
+      _moisture: -1
+      _probability: 0.29
+    - _name: Snow
+      _temperature: -1
+      _moisture: 0.1
+      _probability: 0.01
+  - _name: Fall
+    _minTemperature: -5
+    _maxTemperature: 25
+    _weathers:
+    - _name: Rain
+      _temperature: -0.5
+      _moisture: 0.6
+      _probability: 0.4
+    - _name: Wind
+      _temperature: 0
+      _moisture: -0.2
+      _probability: 0.4
+    - _name: Drought
+      _temperature: 0.75
+      _moisture: -1
+      _probability: 0.05
+    - _name: Snow
+      _temperature: -1
+      _moisture: 0.1
+      _probability: 0.15
+  - _name: Winter
+    _minTemperature: -15
+    _maxTemperature: 5
+    _weathers:
+    - _name: Rain
+      _temperature: 0.5
+      _moisture: 0.5
+      _probability: 0.2
+    - _name: Wind
+      _temperature: 0
+      _moisture: -0.25
+      _probability: 0.1
+    - _name: Drought
+      _temperature: -0.5
+      _moisture: -1
+      _probability: 0.1
+    - _name: Snow
+      _temperature: -1
+      _moisture: 0.1
+      _probability: 0.6
