@@ -11,6 +11,7 @@ ModelImporter:
     3300000: //RootNode
     4300000: polySurface1
     4300002: SM_Env_Terrain_Crosscut
+    4300004: SM_Env_Terrain_CrossCut
   materials:
     importMaterials: 1
     materialName: 0
