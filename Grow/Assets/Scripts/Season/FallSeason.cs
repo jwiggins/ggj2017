@@ -13,4 +13,16 @@ public class FallSeason : Season {
 	void Update () {
 		
 	}
+
+	public override WeatherType CurrentWeather() {
+		return WeatherType.Wind;
+	}
+
+	public override Season StepMonth(int month) {
+		if (month > 11) {
+			return new WinterSeason();
+		}
+		return this;
+	}
+
 }

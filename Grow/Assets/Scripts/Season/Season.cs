@@ -14,11 +14,11 @@ public class Season : MonoBehaviour {
 		
 	}
 
-	public WeatherType CurrentWeather() {
+	public virtual WeatherType CurrentWeather() {
 		return WeatherType.Rain;
 	}
 
-	public Season StepMonth(int month) {
+	public virtual Season StepMonth(int month) {
 		return this;
 	}
 }

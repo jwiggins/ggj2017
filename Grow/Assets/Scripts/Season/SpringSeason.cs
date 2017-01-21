@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spring : Season {
+public class SpringSeason : Season {
 
 	// Use this for initialization
 	void Start () {
@@ -13,4 +13,16 @@ public class Spring : Season {
 	void Update () {
 		
 	}
+
+	public override WeatherType CurrentWeather() {
+		return WeatherType.Rain;
+	}
+
+	public override Season StepMonth(int month) {
+		if (month > 5) {
+			return new SummerSeason();
+		}
+		return this;
+	}
+
 }

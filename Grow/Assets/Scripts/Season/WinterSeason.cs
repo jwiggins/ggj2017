@@ -13,4 +13,17 @@ public class WinterSeason : Season {
 	void Update () {
 		
 	}
+
+	public override WeatherType CurrentWeather() {
+		return WeatherType.Snow;
+	}
+
+	public override Season StepMonth(int month) {
+		if (month > 3) {
+			return new SpringSeason();
+		}
+
+		return this;
+	}
+
 }
