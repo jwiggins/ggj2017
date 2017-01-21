@@ -117,21 +117,21 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1214412295540918}
-  m_LocalRotation: {x: 0.23596294, y: -0.110292666, z: -0.08367938, w: 0.9618497}
-  m_LocalPosition: {x: 43.504425, y: 84.26373, z: 11.772959}
+  m_LocalRotation: {x: 0, y: 0, z: -0.1315471, w: 0.99130994}
+  m_LocalPosition: {x: 42.41455, y: 78.03582, z: 7.6588945}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4139672275850854}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -15.118001}
 --- !u!4 &4265029932746870
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1265033018360762}
-  m_LocalRotation: {x: -0.0013717783, y: -0.069487415, z: 0.18555209, w: 0.98017347}
-  m_LocalPosition: {x: -27.620304, y: 75.30241, z: 0.99926674}
+  m_LocalRotation: {x: 0.028664608, y: -0.073539406, z: 0.22158779, w: 0.97194093}
+  m_LocalPosition: {x: -22.75407, y: 66.20156, z: 1.0398926}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4139672275850854}
@@ -143,8 +143,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1337736648945480}
-  m_LocalRotation: {x: -0.114798464, y: -0.037380412, z: 0.09647543, w: 0.9879861}
-  m_LocalPosition: {x: 8.7627735, y: 116.49629, z: -10.298536}
+  m_LocalRotation: {x: -0.06966074, y: -0.041737583, z: 0.09467196, w: 0.99219084}
+  m_LocalPosition: {x: 9.618444, y: 107.060585, z: -9.324753}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4139672275850854}
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rootModule: {fileID: 114946114184143584}
   _attachedModule: {fileID: 0}
-  _thicknessLevel: 0
+  _thickness: 0
   _blendShapeIndex: 1
 --- !u!114 &114593036988469012
 MonoBehaviour:
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rootModule: {fileID: 114946114184143584}
   _attachedModule: {fileID: 0}
-  _thicknessLevel: 0
+  _thickness: 0
   _blendShapeIndex: 0
 --- !u!114 &114658218650537276
 MonoBehaviour:
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rootModule: {fileID: 114946114184143584}
   _attachedModule: {fileID: 0}
-  _thicknessLevel: 0
+  _thickness: 0
   _blendShapeIndex: 2
 --- !u!114 &114946114184143584
 MonoBehaviour:

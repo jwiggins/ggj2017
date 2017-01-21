@@ -13,9 +13,11 @@ public class AttachmentPoint : MonoBehaviour{
     private PlantModule _attachedModule;
     [SerializeField]
     [Range(0, 3)]
-    private int _thicknessLevel;
+    private float _thickness;
     [SerializeField]
     private int _blendShapeIndex;
+
+    bool mouseOver = false;
     #endregion
 
     #region properties
@@ -40,40 +42,58 @@ public class AttachmentPoint : MonoBehaviour{
     {
         get { return this.RootModule.Plant; }
     }
-    public int ThicknessLevel
+    public float ThicknessLevel
     {
-        get { return this._thicknessLevel; }
+        get { return this._thickness; }
         set
         {
-            int maxThickness = 4;
-            int newThickness = Mathf.Clamp(value, 0, maxThickness);
-            if (newThickness > this.ThicknessLevel)
-                this._thicknessLevel = newThickness;
-            float thicknessValue = newThickness / (float)(Mathf.Max(1, maxThickness));
+            float newThickness = Mathf.RoundToInt(Mathf.Clamp((float)value, 0f, 100f));
+            this._thickness = newThickness;
             SkinnedMeshRenderer skinnedRoot = this.RootModule.SkinnedMeshRenderer;
             if (skinnedRoot != null)
             {
-                skinnedRoot.SetBlendShapeWeight(this._blendShapeIndex, thicknessValue * 100);
+                if (this.RootModule.AttachPoints.Length > 1)
+                {
+                    skinnedRoot.SetBlendShapeWeight(this._blendShapeIndex, newThickness+100);
+                }
+                else
+                {
+                    skinnedRoot.SetBlendShapeWeight(this._blendShapeIndex, newThickness);
+                }
                 if (this.RootModule.RootPoint == null)
                 {
-                    skinnedRoot.SetBlendShapeWeight(this.RootModule.RootBlendShapeIndex, thicknessValue * 100);
+                    skinnedRoot.SetBlendShapeWeight(this.RootModule.RootBlendShapeIndex, newThickness);
                 }
             }
             if (this.AttachedModule != null)
             {
                 SkinnedMeshRenderer skinnedAttached = this.AttachedModule.SkinnedMeshRenderer;
                 if (skinnedAttached != null)
-                    skinnedAttached.SetBlendShapeWeight(this.AttachedModule.RootBlendShapeIndex, thicknessValue * 100);
+                    skinnedAttached.SetBlendShapeWeight(this.AttachedModule.RootBlendShapeIndex, newThickness);
             }
         }
     }
     #endregion
 
     #region public functions
-
+    
     void OnMouseDown()
     {
-        BranchMenu.create(this); //create a BranchMenu for this StemModule
+        if (BranchMenu.CurrentCoroutine != null) return;
+        this.mouseOver = true;
+    }
+    
+    void Update()
+    {
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (this.mouseOver)
+            {
+                if (BranchMenu.CurrentCoroutine != null) return;
+                BranchMenu.create(this); //create a BranchMenu for this StemModule
+            }
+            this.mouseOver = false;
+        }
     }
 
     public PlantModule grow(Plant plant, PlantModule template)
@@ -153,7 +173,15 @@ public class AttachmentPoint : MonoBehaviour{
             leafChoice.AttachPoint = this;
             result.Add(leafChoice);
         }
-        if (this._thicknessLevel < 3)
+        bool mayGrow = true;
+        if (this.RootModule.RootPoint != null)
+        {
+            if (this.RootModule.RootPoint.ThicknessLevel <= this.ThicknessLevel)
+            {
+                mayGrow = false;
+            }
+        }
+        if (this._thickness < 100 && mayGrow && this.AttachedModule!=null)
         {
             MenuChoiceBranchReinforce choice = GameObject.Instantiate(menu._choiceBranchReinforce);
             choice.AttachPoint = this;
