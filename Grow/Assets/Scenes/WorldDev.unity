@@ -419,25 +419,25 @@ MonoBehaviour:
       _gravity: 0
       _temperature: 0.5
       _moisture: 0.5
-      _probability: 0.25
+      _probability: 0.2
     - _name: Wind
       _weather: 1
       _gravity: 0
       _temperature: 0
       _moisture: -0.25
-      _probability: 0.25
+      _probability: 0.1
     - _name: Drought
       _weather: 2
       _gravity: 0
       _temperature: -0.5
       _moisture: -1
-      _probability: 0.25
+      _probability: 0.1
     - _name: Snow
       _weather: 3
       _gravity: 0
       _temperature: -1
       _moisture: 0.1
-      _probability: 0.25
+      _probability: 0.6
 --- !u!1 &570457839
 GameObject:
   m_ObjectHideFlags: 0

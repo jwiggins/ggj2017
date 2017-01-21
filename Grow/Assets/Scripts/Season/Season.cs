@@ -58,8 +58,16 @@ public class Season {
     }
 
     public void ChooseWeather() {
-        int choice = (int)Random.Range(0f, (float)_weathers.Length);
-        _weather = _weathers[choice];
+        float randval = Random.value;
+        foreach (Weather w in _weathers)
+        {
+            randval -= w.probability;
+            if (randval <= 0.0f) {
+                _weather = w;
+                return;
+            }
+        }
+        _weather = _weathers[_weathers.Length-1];
     }
 
     static public SeasonType typeForMonth(int month) {
