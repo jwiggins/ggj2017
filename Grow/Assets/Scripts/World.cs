@@ -56,16 +56,12 @@ public class World : MonoBehaviour {
         }
 
         switch(_season.weatherType) {
-            case Weather.WeatherEnum.SNOW: {
-                GameObject effect = _getWeatherPrefab("Snow");
-                _weatherEffect = PrefabUtility.InstantiatePrefab(effect) as GameObject;
+            case Weather.WeatherEnum.SNOW:
+                _startWeatherEffect("Snow");
                 break;
-            }
-            case Weather.WeatherEnum.RAIN: {
-                GameObject effect = _getWeatherPrefab("Rain");
-                _weatherEffect = PrefabUtility.InstantiatePrefab(effect) as GameObject;
+            case Weather.WeatherEnum.RAIN:
+                _startWeatherEffect("Rain");
                 break;
-            }
         }
     }
 
@@ -80,12 +76,12 @@ public class World : MonoBehaviour {
         _sunlight.transform.rotation = rotation;
     }
 
-    private GameObject _getWeatherPrefab(string name) {
-        foreach (GameObject prefab in _weatherEffects)
-        {
-            if (prefab.name == name) return prefab;
+    private void _startWeatherEffect(string name) {
+        foreach (GameObject prefab in _weatherEffects) {
+            if (prefab.name == name) {
+                _weatherEffect = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
+            }
         }
-        return null;
     }
 
 }
