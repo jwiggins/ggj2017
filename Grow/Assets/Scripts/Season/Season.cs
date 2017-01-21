@@ -7,7 +7,7 @@ using UnityEngine;
 public class Season {
     public enum SeasonType
     {
-        SPRING,
+        SPRING = 0,
         SUMMER,
         FALL,
         WINTER
