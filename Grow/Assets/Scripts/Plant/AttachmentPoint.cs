@@ -11,11 +11,7 @@ public class AttachmentPoint{
     [SerializeField]
     private PlantModule _module;
     [SerializeField]
-    private Vector3 _position;
-    [SerializeField]
-    private Vector3 _orientation;
-    [SerializeField]
-    private float _thickness;
+    private GameObject _connector;
     #endregion
 
     #region properties

@@ -13,7 +13,7 @@ public class Plant : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+        this._core = GameObject.Instantiate(_moduleTemplates[0]).GetComponent<PlantModule>();
 	}
 	
 	// Update is called once per frame
