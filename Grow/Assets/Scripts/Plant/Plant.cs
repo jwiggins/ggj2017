@@ -71,25 +71,41 @@ public class Plant : MonoBehaviour {
                 localEnergy += _calcEnergy(mod, temperature, moisture, light);
             }
 
-            switch (current.type) {
-                case PlantModule.PlantType.SEED:
-                    localEnergy += 0;
-                    break;
-                case PlantModule.PlantType.ROOT:
-                    localEnergy += 5;
-                    break;
-                case PlantModule.PlantType.STEM:
-                    localEnergy += 0;
-                    break;
-                case PlantModule.PlantType.LEAF:
-                    localEnergy += (int)light * 25;
-                    break;
-                case PlantModule.PlantType.FLOWER:
-                    localEnergy += 0;
-                    break;
+            localEnergy += _positiveEnergy(current, light);
+            if (temperature < 0.0f) {
+                localEnergy -= _negativeEnergy(current);
             }
         }
         return localEnergy;
     }
+
+    private int _negativeEnergy(PlantModule current) {
+        switch (current.type) {
+            case PlantModule.PlantType.FLOWER:
+                return 40;
+            case PlantModule.PlantType.LEAF:
+                return 25;
+            case PlantModule.PlantType.SEED:
+                return 15;
+            default:
+                break;
+        }
+        return 0;
+    }
+
+    private int _positiveEnergy(PlantModule current, float light) {
+        switch (current.type) {
+            case PlantModule.PlantType.LEAF:
+                return (int)light * 25;
+            case PlantModule.PlantType.ROOT:
+                return 5;
+            case PlantModule.PlantType.STEM:
+                return 1;
+            default:
+                break;
+        }
+        return 0;
+    }
+
 
 }
