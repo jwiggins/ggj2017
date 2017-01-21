@@ -5,15 +5,9 @@ using UnityEngine;
 
 public class MenuChoiceBranchDrop : MenuChoice {
 
-    private StemModule _stemModule;
-
-    public StemModule StemModule
-    {
-        get { return this._stemModule; }
-        set { this._stemModule = value; }
-    }
     public override void execute()
     {
+        this.AttachPoint.drop();
         return;
     }
 }
