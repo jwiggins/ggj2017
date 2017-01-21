@@ -13,4 +13,7 @@ public class Plant : MonoBehaviour {
 	void Update () {
 		
 	}
+
+	public void ExperienceEnvironment(Season season, WeatherType weather) {
+	}
 }

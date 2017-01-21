@@ -13,4 +13,12 @@ public class Season : MonoBehaviour {
 	void Update () {
 		
 	}
+
+	public WeatherType CurrentWeather() {
+		return WeatherType.Rain;
+	}
+
+	public Season StepMonth(int month) {
+		return this;
+	}
 }
