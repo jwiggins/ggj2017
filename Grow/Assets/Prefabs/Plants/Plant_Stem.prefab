@@ -35,7 +35,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4858262548247210}
-  - component: {fileID: 60121154612413548}
   - component: {fileID: 114041714835870446}
   m_Layer: 0
   m_Name: Plant_Stem
@@ -52,6 +51,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4131352152181914}
+  - component: {fileID: 114636279442804064}
+  - component: {fileID: 58917340535311352}
   m_Layer: 0
   m_Name: LOC_AttachPoint
   m_TagString: Untagged
@@ -129,36 +130,20 @@ Transform:
   m_Father: {fileID: 4858262548247210}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &60121154612413548
-PolygonCollider2D:
+--- !u!58 &58917340535311352
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1136711981195042}
+  m_GameObject: {fileID: 1361988466468490}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
-  m_Points:
-    m_Paths:
-    - - {x: -13.214895, y: 39.566906}
-      - {x: -13.057527, y: 44.743137}
-      - {x: -2.5526512, y: 55.937744}
-      - {x: 2.6206014, y: 67.14626}
-      - {x: 2.5079203, y: 71.78515}
-      - {x: -2.5673203, y: 85.89937}
-      - {x: -3.8892002, y: 101.16596}
-      - {x: 3.9598074, y: 100.97675}
-      - {x: 11.327318, y: 66.60013}
-      - {x: 3.0147777, y: 43.778847}
-      - {x: 2.9123886, y: 37.257576}
-      - {x: 1.7770268, y: 31.255743}
-      - {x: 4.9047723, y: 21.355936}
-      - {x: 4.521242, y: -0.77143455}
-      - {x: -4.7216854, y: -0.6211125}
-      - {x: -5.65456, y: 29.522598}
+  serializedVersion: 2
+  m_Radius: 20
 --- !u!114 &114041714835870446
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -171,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: Plant_Stem
+  _rootPoint: {fileID: 0}
   _health: 0
   _temperatureResistance: 0
   _gravityResistance: 0
@@ -178,12 +164,22 @@ MonoBehaviour:
   _type: 2
   _lightGathering: 0
   _waterGathering: 0
-  _menuAnchor: {fileID: 4107394751392618}
-  _thicknessLevel: 0
   _attachmentPoints:
-  - _name: Attach_1
-    _module: {fileID: 0}
-    _connector: {fileID: 1361988466468490}
+  - {fileID: 114636279442804064}
+--- !u!114 &114636279442804064
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1361988466468490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42d197526169323418dfa81fa8d241e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rootModule: {fileID: 114041714835870446}
+  _attachedModule: {fileID: 0}
+  _thicknessLevel: 0
 --- !u!137 &137045591200714560
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

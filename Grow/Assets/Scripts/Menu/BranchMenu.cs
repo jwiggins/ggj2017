@@ -21,6 +21,10 @@ public class BranchMenu : MonoBehaviour {
     [SerializeField]
     public MenuChoiceBranchGrow _choiceBranchGrow;
     [SerializeField]
+    public MenuChoiceBranchSplit _choiceBranchSplit;
+    [SerializeField]
+    public MenuChoiceBranchDoubleSplit _choiceBranchDoubleSplit;
+    [SerializeField]
     public MenuChoiceFlowerDrop _choiceFlowerDrop;
     [SerializeField]
     public MenuChoiceFlowerGrow _choiceFlowerGrow;
@@ -33,7 +37,7 @@ public class BranchMenu : MonoBehaviour {
     [SerializeField]
     public MenuChoiceLeafGrow _choiceLeafGrow;
 
-    private StemModule _module;
+    private AttachmentPoint _attachPoint;
     private MenuChoice _activeChoice;
 
     public MenuChoice ActiveChoice
@@ -45,15 +49,15 @@ public class BranchMenu : MonoBehaviour {
         }
     }
 
-    public StemModule Module
+    public AttachmentPoint AttachPoint
     {
         get
         {
-            return this._module;
+            return this._attachPoint;
         }
         set
         {
-            this._module = value;
+            this._attachPoint = value;
         }
     }
 
@@ -74,15 +78,15 @@ public class BranchMenu : MonoBehaviour {
         GameObject.Destroy(this.gameObject);
     }
 
-    public static BranchMenu create(StemModule module)
+    public static BranchMenu create(AttachmentPoint attachmentPoint)
     {
         if (_currentMenu != null)
             _currentMenu.cancel();
         Camera camera = GameObject.Find("Camera").GetComponent<Camera>();
-        BranchMenu result = GameObject.Instantiate(module.Plant.BranchMenu);
-        result.Module = module;
+        BranchMenu result = GameObject.Instantiate(attachmentPoint.Plant.BranchMenu);
+        result._attachPoint = attachmentPoint;
         result.transform.SetParent(GameObject.Find("Canvas").transform);
-        Vector3 position = camera.WorldToScreenPoint(module.MenuAnchor.position);
+        Vector3 position = camera.WorldToScreenPoint(attachmentPoint.transform.position);
         int menuWidth = 300;
         if (position.x < menuWidth/2) position.x = menuWidth/2;
         if(position.x > Screen.width- menuWidth/2) position.x = Screen.width- menuWidth/2;
@@ -91,7 +95,7 @@ public class BranchMenu : MonoBehaviour {
         if (position.y > Screen.height - menuHeight / 2) position.y = Screen.height - menuHeight / 2;
         result.transform.position = position;
         _currentMenu = result;
-        bool assignedChoices = module.AssignMenuChoices(result);
+        bool assignedChoices = attachmentPoint.AssignMenuChoices(result);
         if (!assignedChoices)
         {
             Debug.Log("No actions found.");

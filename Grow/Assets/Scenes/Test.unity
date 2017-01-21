@@ -316,7 +316,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c19ba48d1664e9543b9ecc1c47877e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _month: 1
+  _sunlight: {fileID: 1195574283}
+  _plant: {fileID: 332719800}
+  _weatherEffects: []
   _seasons:
   - _name: Spring
     _type: 0
