@@ -30,27 +30,23 @@ public class Weather {
     private float _probability;
 
     public float moisture {
-        get {
-            return _moisture;
-        }
+        get { return _moisture; }
+        set { _moisture = value; }
     }
 
     public float probability {
-        get {
-            return _probability;
-        }
+        get { return _probability; }
+        set { _probability = value; }
     }
 
     public float temperature {
-        get {
-            return _temperature;
-        }
+        get { return _temperature; }
+        set { _temperature = value; }
     }
 
     public WeatherEnum type {
-        get {
-            return _weather;
-        }
+        get { return _weather; }
+        set { _weather = value; }
     }
 
 }

@@ -24,6 +24,18 @@ public class Season {
     private Weather[] _weathers;
     private Weather _weather;
 
+    public float minTemperature {
+        set { this._minTemperature = value; }
+    }
+
+    public float maxTemperature {
+        set { this._maxTemperature = value; }
+    }
+
+    public Weather[] weathers {
+        set { this._weathers = value; }
+    }
+
     public int moistureGain {
         get {
             switch (_weather.type) {
