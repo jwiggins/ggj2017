@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlantModule : MonoBehaviour {
-    private enum PlantType
+    public enum PlantType
     {
         SEED,
         ROOT,
@@ -27,19 +27,13 @@ public class PlantModule : MonoBehaviour {
     private int _lightGathering;
     [SerializeField]
     private int _waterGathering;
-    [SerializeField]
-    [Range(0, 3)]
-    private int _thicknessLevel;
-    [SerializeField]
-    private AttachmentPoint[] _attachmentPoints;
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private Plant _plant;
+
+
+    public Plant Plant
+    {
+        get { return this._plant; }
+        set { this._plant = value;}
+    }
 }
