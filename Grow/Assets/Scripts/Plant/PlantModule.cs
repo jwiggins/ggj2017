@@ -14,6 +14,8 @@ public class PlantModule : MonoBehaviour {
     [SerializeField]
     private string _name;
     [SerializeField]
+    private AttachmentPoint _rootPoint;
+    [SerializeField]
     private int _health;
     [SerializeField]
     private int _temperatureResistance;
@@ -45,5 +47,11 @@ public class PlantModule : MonoBehaviour {
     {
         get { return this._plant; }
         set { this._plant = value;}
+    }
+
+    public AttachmentPoint RootPoint
+    {
+        get { return this._rootPoint; }
+        set { this._rootPoint = value; }
     }
 }

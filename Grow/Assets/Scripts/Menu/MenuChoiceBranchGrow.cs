@@ -4,14 +4,7 @@ using UnityEngine;
 
 public class MenuChoiceBranchGrow : MenuChoice
 {
-    private AttachmentPoint _attachPoint;
     private Plant _plant;
-
-    public AttachmentPoint AttachPoint
-    {
-        get { return this._attachPoint; }
-        set { this._attachPoint = value; }
-    }
     public Plant Plant
     {
         get { return this._plant; }
@@ -19,7 +12,7 @@ public class MenuChoiceBranchGrow : MenuChoice
     }
     public override void execute()
     {
-        AttachPoint.grow(this.Plant);
+        this.AttachPoint.grow(this.Plant, this.Plant.StemModule);
         return;
     }
 }
