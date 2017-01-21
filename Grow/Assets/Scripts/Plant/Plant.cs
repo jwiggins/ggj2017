@@ -14,6 +14,7 @@ public class Plant : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         this._core = GameObject.Instantiate(_moduleTemplates[0]).GetComponent<PlantModule>();
+        this._core.transform.SetParent(this.transform);
 	}
 	
 	// Update is called once per frame
