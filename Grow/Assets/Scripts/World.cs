@@ -90,9 +90,11 @@ public class World : MonoBehaviour {
     }
 
     private void _startWeatherEffect(string name) {
+        GameObject camera = GameObject.Find("Camera");
         foreach (GameObject prefab in _weatherEffects) {
             if (prefab.name == name) {
                 _weatherEffect = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
+                _weatherEffect.transform.SetParent(camera.transform);
             }
         }
     }
