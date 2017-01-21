@@ -116,7 +116,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 524319043505b594c93e844af5dadad1, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 524319043505b594c93e844af5dadad1, type: 3}
       propertyPath: m_LocalRotation.z
@@ -124,7 +124,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 524319043505b594c93e844af5dadad1, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 524319043505b594c93e844af5dadad1, type: 3}
       propertyPath: m_RootOrder
@@ -132,7 +132,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 524319043505b594c93e844af5dadad1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 524319043505b594c93e844af5dadad1, type: 3}
@@ -321,6 +321,7 @@ MonoBehaviour:
   _weatherEffects:
   - {fileID: 1390979364917314, guid: 47954a15f8fe64ed79a248afd8bb2cdf, type: 2}
   - {fileID: 1234804539956202, guid: 0928d5dbfb1ef4b5aa97aedf547d0db9, type: 2}
+  - {fileID: 1511655235351704, guid: d4e5895495da84000870367d86cb29e6, type: 2}
   _seasons:
   - _name: Spring
     _type: 0
@@ -330,23 +331,27 @@ MonoBehaviour:
     - _name: Rain
       _weather: 0
       _gravity: 0
-      _temperature: 0
+      _temperature: -0.5
       _moisture: 0
+      _probability: 0.45
     - _name: Wind
       _weather: 1
       _gravity: 0
-      _temperature: 0
+      _temperature: -0.25
       _moisture: 0
+      _probability: 0.45
     - _name: Drought
       _weather: 2
       _gravity: 0
-      _temperature: 0
-      _moisture: 0
+      _temperature: 0.1
+      _moisture: -0.75
+      _probability: 0.05
     - _name: Snow
       _weather: 3
       _gravity: 0
-      _temperature: 0
+      _temperature: -1
       _moisture: 0
+      _probability: 0.05
   - _name: Summer
     _type: 0
     _minTemperature: 15
@@ -355,23 +360,27 @@ MonoBehaviour:
     - _name: Rain
       _weather: 0
       _gravity: 0
-      _temperature: 0
-      _moisture: 0
+      _temperature: 0.2
+      _moisture: 0.5
+      _probability: 0.35
     - _name: Wind
       _weather: 1
       _gravity: 0
-      _temperature: 0
-      _moisture: 0
+      _temperature: 0.5
+      _moisture: -0.25
+      _probability: 0.35
     - _name: Drought
       _weather: 2
       _gravity: 0
-      _temperature: 0
-      _moisture: 0
+      _temperature: 1
+      _moisture: -1
+      _probability: 0.29
     - _name: Snow
       _weather: 3
       _gravity: 0
-      _temperature: 0
-      _moisture: 0
+      _temperature: -1
+      _moisture: 0.1
+      _probability: 0.01
   - _name: Fall
     _type: 0
     _minTemperature: -5
@@ -380,48 +389,56 @@ MonoBehaviour:
     - _name: Rain
       _weather: 0
       _gravity: 0
-      _temperature: 0
-      _moisture: 0
+      _temperature: -0.5
+      _moisture: 0.6
+      _probability: 0.4
     - _name: Wind
       _weather: 1
       _gravity: 0
       _temperature: 0
-      _moisture: 0
+      _moisture: -0.2
+      _probability: 0.4
     - _name: Drought
       _weather: 2
       _gravity: 0
-      _temperature: 0
-      _moisture: 0
+      _temperature: 0.75
+      _moisture: -1
+      _probability: 0.05
     - _name: Snow
       _weather: 3
       _gravity: 0
-      _temperature: 0
-      _moisture: 0
+      _temperature: -1
+      _moisture: 0.1
+      _probability: 0.15
   - _name: Winter
     _type: 0
-    _minTemperature: 15
-    _maxTemperature: 45
+    _minTemperature: -15
+    _maxTemperature: 5
     _weathers:
     - _name: Rain
       _weather: 0
       _gravity: 0
-      _temperature: 0
-      _moisture: 0
+      _temperature: 0.5
+      _moisture: 0.5
+      _probability: 0.2
     - _name: Wind
       _weather: 1
       _gravity: 0
       _temperature: 0
-      _moisture: 0
+      _moisture: -0.25
+      _probability: 0.1
     - _name: Drought
       _weather: 2
       _gravity: 0
-      _temperature: 0
-      _moisture: 0
+      _temperature: -0.5
+      _moisture: -1
+      _probability: 0.1
     - _name: Snow
       _weather: 3
       _gravity: 0
-      _temperature: 0
-      _moisture: 0
+      _temperature: -1
+      _moisture: 0.1
+      _probability: 0.6
 --- !u!1 &570457839
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,7 +614,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a02970dc7ee165740861a049ddf611cc, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a02970dc7ee165740861a049ddf611cc, type: 3}
       propertyPath: m_LocalRotation.z
@@ -605,7 +622,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a02970dc7ee165740861a049ddf611cc, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a02970dc7ee165740861a049ddf611cc, type: 3}
       propertyPath: m_RootOrder
@@ -613,7 +630,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a02970dc7ee165740861a049ddf611cc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a02970dc7ee165740861a049ddf611cc, type: 3}

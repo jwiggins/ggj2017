@@ -25,11 +25,19 @@ public class Weather {
     [SerializeField]
     [Range(-1,1)]
     private float _moisture;
-
+    [SerializeField]
+    [Range(0,1)]
+    private float _probability;
 
     public float moisture {
         get {
             return _moisture;
+        }
+    }
+
+    public float probability {
+        get {
+            return _probability;
         }
     }
 
