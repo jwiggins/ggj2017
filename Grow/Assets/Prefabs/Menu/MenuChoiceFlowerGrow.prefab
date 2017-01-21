@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114858265445710708}
   - component: {fileID: 114201937558142338}
   - component: {fileID: 114443875341486320}
+  - component: {fileID: 225830678209011902}
   m_Layer: 0
   m_Name: MenuChoiceFlowerGrow
   m_TagString: Untagged
@@ -145,3 +146,14 @@ RectTransform:
   m_AnchoredPosition: {x: -0.000030517578, y: 0}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &225830678209011902
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1782079702611200}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

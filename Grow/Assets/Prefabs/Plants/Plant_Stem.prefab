@@ -167,7 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rootModule: {fileID: 114041714835870446}
   _attachedModule: {fileID: 0}
-  _thicknessLevel: 0
+  _thickness: 0
   _blendShapeIndex: 0
 --- !u!135 &135068106210227048
 SphereCollider:

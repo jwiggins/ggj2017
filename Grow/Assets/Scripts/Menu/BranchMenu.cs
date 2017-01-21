@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class BranchMenu : MonoBehaviour {
     private static BranchMenu _currentMenu;
+    private static Coroutine _currentCoroutine;
 
     [SerializeField]
     private RectTransform _choices;
@@ -83,6 +84,11 @@ public class BranchMenu : MonoBehaviour {
         }
     }
 
+    public static Coroutine CurrentCoroutine
+    {
+        get { return _currentCoroutine; }
+    }
+
     void Start()
     {
         this._camera = GameObject.Find("Camera").GetComponent<Camera>();
@@ -116,7 +122,8 @@ public class BranchMenu : MonoBehaviour {
     }
     private void zoomOut()
     {
-        this.AttachPoint.Plant.StartCoroutine(moveCameraTo(ViewAllVector));
+        if (_currentCoroutine != null) this.AttachPoint.Plant.StopCoroutine(_currentCoroutine);
+        _currentCoroutine = this.AttachPoint.Plant.StartCoroutine(moveCameraTo(ViewAllVector));
     }
     private void end()
     {
@@ -142,7 +149,8 @@ public class BranchMenu : MonoBehaviour {
         }
         result._accept.onClick.AddListener(() => { result.accept(); });
         result._cancel.onClick.AddListener(() => { result.cancel(); });
-        attachmentPoint.StartCoroutine(BranchMenu.moveCameraTo(attachmentPoint.transform.position + new Vector3(0, 0, 1.75f)));
+        if (_currentCoroutine != null) attachmentPoint.Plant.StopCoroutine(_currentCoroutine);
+        _currentCoroutine = attachmentPoint.Plant.StartCoroutine(BranchMenu.moveCameraTo(attachmentPoint.transform.position + new Vector3(0, 0, 1.75f)));
         return result;
     }
 
@@ -171,5 +179,6 @@ public class BranchMenu : MonoBehaviour {
             cameraTransform.position = Vector3.Lerp(startPosition, targetPosition, Mathf.SmoothStep(0,1,t));
             yield return null;
         }
+        _currentCoroutine = null;
     }
 }
