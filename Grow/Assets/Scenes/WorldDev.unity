@@ -208,6 +208,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 524319043505b594c93e844af5dadad1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.61
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 524319043505b594c93e844af5dadad1, type: 3}
   m_IsPrefabParent: 0
@@ -337,9 +341,10 @@ MonoBehaviour:
     type: 2}
   _seed: {fileID: 114731004987679524, guid: 198db29c5b15e6a4f9241c793ddef235, type: 2}
   _stem: {fileID: 114041714835870446, guid: e67f99d5888686341b93d6aa86d99481, type: 2}
+  _stemDouble: {fileID: 0}
+  _stemTriple: {fileID: 0}
   _leaf: {fileID: 0}
   _flower: {fileID: 0}
-  _root: {fileID: 0}
 --- !u!4 &332719802
 Transform:
   m_ObjectHideFlags: 0
