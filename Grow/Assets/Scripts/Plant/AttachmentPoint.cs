@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "AttachmentPoint", menuName = "ScriptableObjects/AttachmentPoint")]
 [System.Serializable]
 public class AttachmentPoint{
 
