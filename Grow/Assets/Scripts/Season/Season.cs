@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Season : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+[System.Serializable]
+public class Season {
+    [SerializeField]
+    private string _name;
+    [SerializeField]
+    private float _minTemperature;
+    [SerializeField]
+    private float _maxTemperature;
+    [SerializeField]
+    private Weather[] _weathers;
 }

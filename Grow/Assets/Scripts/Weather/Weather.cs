@@ -2,15 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weather : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+[System.Serializable]
+public class Weather {
+    private enum WeatherEnum
+    {
+        RAIN,
+        WIND,
+        DROUGHT,
+        SNOW
+    }
+    [SerializeField]
+    private string _name;
+    [SerializeField]
+    private WeatherEnum _weather;
+    [SerializeField]
+    private float _gravity;
+    [SerializeField]
+    private float _temperature;
+    [SerializeField]
+    private float _moisture;
 }
