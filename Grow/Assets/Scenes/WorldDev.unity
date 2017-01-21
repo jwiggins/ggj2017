@@ -321,6 +321,7 @@ MonoBehaviour:
   _weatherEffects:
   - {fileID: 1390979364917314, guid: 47954a15f8fe64ed79a248afd8bb2cdf, type: 2}
   - {fileID: 1234804539956202, guid: 0928d5dbfb1ef4b5aa97aedf547d0db9, type: 2}
+  - {fileID: 1511655235351704, guid: d4e5895495da84000870367d86cb29e6, type: 2}
   _seasons:
   - _name: Spring
     _type: 0

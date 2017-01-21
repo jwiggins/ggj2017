@@ -70,6 +70,10 @@ public class World : MonoBehaviour {
             case Weather.WeatherEnum.RAIN:
                 _startWeatherEffect("Rain");
                 break;
+            case Weather.WeatherEnum.WIND:
+                _startWeatherEffect("Wind");
+                break;
+
         }
     }
 
