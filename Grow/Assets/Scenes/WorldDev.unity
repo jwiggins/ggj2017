@@ -227,23 +227,23 @@ MonoBehaviour:
     - _name: Rain
       _weather: 0
       _gravity: 0
-      _temperature: 0
-      _moisture: 0
+      _temperature: -0.355
+      _moisture: 0.299
     - _name: Wind
       _weather: 1
       _gravity: 0
-      _temperature: 0
-      _moisture: 0
+      _temperature: -0.626
+      _moisture: -0.187
     - _name: Drought
       _weather: 2
       _gravity: 0
-      _temperature: 0
-      _moisture: 0
+      _temperature: 0.401
+      _moisture: -0.617
     - _name: Snow
       _weather: 3
       _gravity: 0
-      _temperature: 0
-      _moisture: 0
+      _temperature: -0.84
+      _moisture: -0.056
   - _name: Summer
     _type: 0
     _minTemperature: 15
@@ -252,23 +252,18 @@ MonoBehaviour:
     - _name: Rain
       _weather: 0
       _gravity: 0
-      _temperature: 0
-      _moisture: 0
+      _temperature: -0.081
+      _moisture: 0.405
     - _name: Wind
       _weather: 1
       _gravity: 0
-      _temperature: 0
-      _moisture: 0
+      _temperature: 0.189
+      _moisture: -0.189
     - _name: Drought
       _weather: 2
       _gravity: 0
-      _temperature: 0
-      _moisture: 0
-    - _name: Snow
-      _weather: 3
-      _gravity: 0
-      _temperature: 0
-      _moisture: 0
+      _temperature: 1
+      _moisture: -1
   - _name: Fall
     _type: 0
     _minTemperature: -5
@@ -277,23 +272,23 @@ MonoBehaviour:
     - _name: Rain
       _weather: 0
       _gravity: 0
-      _temperature: 0
-      _moisture: 0
+      _temperature: -0.477
+      _moisture: 0.378
     - _name: Wind
       _weather: 1
       _gravity: 0
-      _temperature: 0
-      _moisture: 0
+      _temperature: -0.387
+      _moisture: -0.099
     - _name: Drought
       _weather: 2
       _gravity: 0
       _temperature: 0
-      _moisture: 0
+      _moisture: -0.486
     - _name: Snow
       _weather: 3
       _gravity: 0
-      _temperature: 0
-      _moisture: 0
+      _temperature: -0.845
+      _moisture: 0.072
   - _name: Winter
     _type: 0
     _minTemperature: -20
@@ -302,23 +297,23 @@ MonoBehaviour:
     - _name: Rain
       _weather: 0
       _gravity: 0
-      _temperature: 0
-      _moisture: 0
+      _temperature: 0.117
+      _moisture: 0.225
     - _name: Wind
       _weather: 1
       _gravity: 0
-      _temperature: 0
-      _moisture: 0
+      _temperature: -0.584
+      _moisture: -0.27
     - _name: Drought
       _weather: 2
       _gravity: 0
-      _temperature: 0
-      _moisture: 0
+      _temperature: -0.503
+      _moisture: -1
     - _name: Snow
       _weather: 3
       _gravity: 0
-      _temperature: 0
-      _moisture: 0
+      _temperature: -1
+      _moisture: -0.477
 --- !u!1 &921594633
 GameObject:
   m_ObjectHideFlags: 0

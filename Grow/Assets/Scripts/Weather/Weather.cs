@@ -16,9 +16,31 @@ public class Weather {
     [SerializeField]
     private WeatherEnum _weather;
     [SerializeField]
+    [Range(0,1)]
     private float _gravity;
     [SerializeField]
+    [Range(-1,1)]
     private float _temperature;
     [SerializeField]
+    [Range(-1,1)]
     private float _moisture;
+
+    public float gravity {
+        get {
+            return _gravity;
+        }
+    }
+
+    public float moisture {
+        get {
+            return _moisture;
+        }
+    }
+
+    public float temperature {
+        get {
+            return _temperature;
+        }
+    }
+
 }

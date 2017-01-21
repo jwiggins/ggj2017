@@ -22,9 +22,25 @@ public class Season {
     private float _maxTemperature;
     [SerializeField]
     private Weather[] _weathers;
+    private Weather _weather;
 
-    public Weather CurrentWeather() {
-        return _weathers[0];
+    public float moisture {
+        get {
+            return _weather.moisture;
+        }
+    }
+
+    public float temperature {
+        get {
+            float range = (_maxTemperature - _minTemperature) / 2.0f;
+            float mid = (_minTemperature + _maxTemperature) / 2.0f;
+            return mid + _weather.temperature * range;
+        }
+    }
+
+    public void ChooseWeather() {
+        int choice = (int)Random.Range(0f, (float)_weathers.Length);
+        _weather = _weathers[choice];
     }
 
     static public SeasonType typeForMonth(int month) {

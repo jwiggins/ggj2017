@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class World : MonoBehaviour {
-    const float kMinSunAngle = 23.0f;
-    const float kMaxSunAngle = 53.0f;
     const float kSunDistance = 10.0f;
     static readonly float[] kSunAngles = {
         23.0f, 29.0f, 35.0f, 41.0f, 47.0f, 53.0f,
@@ -23,7 +21,7 @@ public class World : MonoBehaviour {
     // Use this for initialization
     void Start () {
         _month = 1;
-        _adjustSeason();
+        _adjustToMonth();
     }
 
     // Update is called once per frame
@@ -35,13 +33,14 @@ public class World : MonoBehaviour {
         if (e.type == EventType.KeyDown && e.character == ' ') {
             //  Advance the month when the spacebar is pressed
             _month = (_month % 12) + 1;
-            _adjustSeason();
+            _adjustToMonth();
             e.Use();
         }
     }
 
-    private void _adjustSeason() {
+    private void _adjustToMonth() {
         _season = _seasons[(int)Season.typeForMonth(_month)];
+        _season.ChooseWeather();
         _adjustLight();
     }
 
