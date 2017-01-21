@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Plant : MonoBehaviour {
-    
+
     private PlantModule _core;
-    private int _light = 0;
-    private int _water = 0;
+    private int _energy = 0;
 
     [SerializeField]
     private BranchMenu _branchMenu;
@@ -61,6 +60,36 @@ public class Plant : MonoBehaviour {
     }
 
     public void ExperienceEnvironment(float temperature, float moisture, float light) {
+        _energy += _calcEnergy(_core, temperature, moisture, light);
+    }
+
+    private int _calcEnergy(PlantModule current, float temperature, float moisture, float light) {
+        int localEnergy = 0;
+
+        if (current != null) {
+            foreach (PlantModule mod in current.children) {
+                localEnergy += _calcEnergy(mod, temperature, moisture, light);
+            }
+
+            switch (current.type) {
+                case PlantModule.PlantType.SEED:
+                    localEnergy += 0;
+                    break;
+                case PlantModule.PlantType.ROOT:
+                    localEnergy += 5;
+                    break;
+                case PlantModule.PlantType.STEM:
+                    localEnergy += 0;
+                    break;
+                case PlantModule.PlantType.LEAF:
+                    localEnergy += (int)light * 25;
+                    break;
+                case PlantModule.PlantType.FLOWER:
+                    localEnergy += 0;
+                    break;
+            }
+        }
+        return localEnergy;
     }
 
 }

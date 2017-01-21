@@ -29,7 +29,17 @@ public class PlantModule : MonoBehaviour {
     private int _waterGathering;
 
     private Plant _plant;
+    private PlantModule[] _children;
 
+    public PlantModule[] children
+    {
+        get { return _children; }
+    }
+
+    public PlantType type
+    {
+        get { return _type; }
+    }
 
     public Plant Plant
     {
