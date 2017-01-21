@@ -12,7 +12,7 @@ public class MenuChoiceBranchGrow : MenuChoice
     }
     public override void execute()
     {
-        this.AttachPoint.grow(this.Plant, this.Plant.StemModule);
+        this.AttachPoint.grow(this.Plant, this.Plant.StemModuleSingle);
         return;
     }
 }

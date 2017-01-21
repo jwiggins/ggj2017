@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CircleCollider2D))]
+[RequireComponent(typeof(SphereCollider))]
 [System.Serializable]
 public class AttachmentPoint : MonoBehaviour{
 
@@ -14,6 +14,8 @@ public class AttachmentPoint : MonoBehaviour{
     [SerializeField]
     [Range(0, 3)]
     private int _thicknessLevel;
+    [SerializeField]
+    private int _blendShapeIndex;
     #endregion
 
     #region properties
@@ -24,6 +26,15 @@ public class AttachmentPoint : MonoBehaviour{
     public PlantModule AttachedModule
     {
         get { return this._attachedModule; }
+        set {
+            this._attachedModule = value;
+            if (value != null)
+            {
+                this._attachedModule.transform.position = this.transform.position;
+                this._attachedModule.transform.rotation = this.transform.rotation;
+                this.ThicknessLevel = this.ThicknessLevel;
+            }
+        }
     }
     public Plant Plant
     {
@@ -41,10 +52,19 @@ public class AttachmentPoint : MonoBehaviour{
             float thicknessValue = newThickness / (float)(Mathf.Max(1, maxThickness));
             SkinnedMeshRenderer skinnedRoot = this.RootModule.SkinnedMeshRenderer;
             if (skinnedRoot != null)
-                skinnedRoot.SetBlendShapeWeight(0, thicknessValue);
-            SkinnedMeshRenderer skinnedAttached = this.RootModule.SkinnedMeshRenderer;
-            if(skinnedAttached!=null)
-                skinnedAttached.SetBlendShapeWeight(0, thicknessValue);
+            {
+                skinnedRoot.SetBlendShapeWeight(this._blendShapeIndex, thicknessValue * 100);
+                if (this.RootModule.RootPoint == null)
+                {
+                    skinnedRoot.SetBlendShapeWeight(this.RootModule.RootBlendShapeIndex, thicknessValue * 100);
+                }
+            }
+            if (this.AttachedModule != null)
+            {
+                SkinnedMeshRenderer skinnedAttached = this.AttachedModule.SkinnedMeshRenderer;
+                if (skinnedAttached != null)
+                    skinnedAttached.SetBlendShapeWeight(this.AttachedModule.RootBlendShapeIndex, thicknessValue * 100);
+            }
         }
     }
     #endregion
@@ -64,6 +84,7 @@ public class AttachmentPoint : MonoBehaviour{
         this._attachedModule.transform.SetParent(plant.transform);
         this._attachedModule.transform.position = this.transform.position;
         this._attachedModule.transform.rotation = this.transform.rotation;
+        this.ThicknessLevel = this.ThicknessLevel;
         return this._attachedModule;
     }
     public void drop()

@@ -16,6 +16,8 @@ public class PlantModule : MonoBehaviour {
     [SerializeField]
     private AttachmentPoint _rootPoint;
     [SerializeField]
+    private int _rootBlendShapeIndex;
+    [SerializeField]
     private SkinnedMeshRenderer _renderer;
     [SerializeField]
     private int _health;
@@ -76,5 +78,13 @@ public class PlantModule : MonoBehaviour {
     {
         get { return this._rootPoint; }
         set { this._rootPoint = value; }
+    }
+
+    public int RootBlendShapeIndex
+    {
+        get
+        {
+            return this._rootBlendShapeIndex;
+        }
     }
 }

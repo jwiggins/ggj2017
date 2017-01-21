@@ -6,7 +6,7 @@ public class MenuChoiceBranchReinforce : MenuChoice
 {
     public override void execute()
     {
-        this.AttachPoint.ThicknessLevel++;
+        this.AttachPoint.ThicknessLevel+=1;
         return;
     }
 }

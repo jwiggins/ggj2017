@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Plant : MonoBehaviour {
 
-    private PlantModule _core;
+    private SeedModule _core;
     private int _energy = 0;
 
     [SerializeField]
@@ -15,20 +15,43 @@ public class Plant : MonoBehaviour {
     [SerializeField]
     private StemModule _stem;
     [SerializeField]
+    private StemModule _stemDouble;
+    [SerializeField]
+    private StemModule _stemTriple;
+    [SerializeField]
     private LeafModule _leaf;
     [SerializeField]
     private FlowerModule _flower;
-    [SerializeField]
-    private RootModule _root;
+
+    public PlantModule[] children
+    {
+        get
+        {
+            List<PlantModule> result = new List<PlantModule>();
+            result.Add(this.RootModule);
+            result.AddRange(this.RootModule.children);
+            return result.ToArray();
+        }
+    }
 
     public SeedModule SeedModule
     {
         get { return this._seed; }
     }
 
-    public StemModule StemModule
+    public StemModule StemModuleSingle
     {
-        get { return this._seed; }
+        get { return this._stem; }
+    }
+
+    public StemModule StemModuleDouble
+    {
+        get { return this._stemDouble; }
+    }
+
+    public StemModule StemModuleTriple
+    {
+        get { return this._stemTriple; }
     }
 
     public LeafModule LeafModule
@@ -41,9 +64,9 @@ public class Plant : MonoBehaviour {
         get { return this._flower; }
     }
 
-    public RootModule RootModule
+    public SeedModule RootModule
     {
-        get { return this._root; }
+        get { return this._core; }
     }
 
     public BranchMenu BranchMenu { get { return this._branchMenu; } }
