@@ -6,7 +6,7 @@ public class SummerSeason : Season {
 
 	// Use this for initialization
 	void Start () {
-		
+		Debug.Log("It's now summer");
 	}
 	
 	// Update is called once per frame
@@ -20,7 +20,7 @@ public class SummerSeason : Season {
 
 	public override Season StepMonth(int month) {
 		if (month > 9) {
-			return new FallSeason();
+			return gameObject.AddComponent( typeof(FallSeason)) as FallSeason;
 		}
 
 		return this;
