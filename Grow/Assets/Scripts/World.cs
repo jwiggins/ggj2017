@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class World : MonoBehaviour {
     const float kSunDistance = 10.0f;
@@ -9,6 +10,10 @@ public class World : MonoBehaviour {
         23.0f, 29.0f, 35.0f, 41.0f, 47.0f, 53.0f,
         53.0f, 47.0f, 41.0f, 35.0f, 29.0f, 23.0f
     };
+    static readonly string[] kMonths = {
+        "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"
+    };
+
 
     int _month;
     int _soilMoisture;
@@ -58,6 +63,8 @@ public class World : MonoBehaviour {
         _soilMoisture = (int)Mathf.Repeat(_soilMoisture * _season.moistureLoss, 100);
         _plantInstance.ExperienceEnvironment(_season.temperature, _soilMoisture, light);
 
+        _updateHud();
+
         if (_weatherEffect != null) {
             Destroy(_weatherEffect);
             _weatherEffect = null;
@@ -101,6 +108,15 @@ public class World : MonoBehaviour {
                 _weatherEffect.transform.SetParent(camera.transform);
             }
         }
+    }
+
+    private void _updateHud() {
+        Text energyDisp = GameObject.Find("Energy").GetComponent<Text>();
+        energyDisp.text = "Energy: " + _plantInstance.energy.ToString();
+        Text tempDisp = GameObject.Find("Temperature").GetComponent<Text>();
+        tempDisp.text = "Temperature: " + _season.temperature.ToString() + "ºC";
+        Text monthDisp = GameObject.Find("Month").GetComponent<Text>();
+        monthDisp.text = "Date: " + kMonths[_month-1];
     }
 
 }

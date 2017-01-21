@@ -71,6 +71,11 @@ public class Plant : MonoBehaviour {
 
     public BranchMenu BranchMenu { get { return this._branchMenu; } }
 
+    public int energy
+    {
+        get { return this._energy; }
+    }
+
     // Use this for initialization
     void Start () {
         this._core = GameObject.Instantiate(this._seed);
@@ -83,23 +88,12 @@ public class Plant : MonoBehaviour {
     }
 
     public void ExperienceEnvironment(float temperature, float moisture, float light) {
-        _energy += _calcEnergy(_core, temperature, moisture, light);
-    }
-
-    private int _calcEnergy(PlantModule current, float temperature, float moisture, float light) {
-        int localEnergy = 0;
-
-        if (current != null) {
-            foreach (PlantModule mod in current.children) {
-                localEnergy += _calcEnergy(mod, temperature, moisture, light);
-            }
-
-            localEnergy += _positiveEnergy(current, light);
+        foreach (PlantModule mod in this.children) {
+            _energy += _positiveEnergy(mod, light);
             if (temperature < 0.0f) {
-                localEnergy -= _negativeEnergy(current);
+                _energy -= _negativeEnergy(mod);
             }
         }
-        return localEnergy;
     }
 
     private int _negativeEnergy(PlantModule current) {
