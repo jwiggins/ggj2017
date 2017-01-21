@@ -173,6 +173,10 @@ MonoBehaviour:
     type: 2}
   _choiceBranchGrow: {fileID: 114501336459364718, guid: 3207c2e0f5dc9dd43b96c666816fc0b6,
     type: 2}
+  _choiceBranchSplit: {fileID: 114049196933774726, guid: 7effaee52a0b79e408934119a91da96f,
+    type: 2}
+  _choiceBranchDoubleSplit: {fileID: 114394673196917754, guid: fc3cc68770eb68146995790ca1f47baa,
+    type: 2}
   _choiceFlowerDrop: {fileID: 114628534865028670, guid: 0565840cb68faa34ab47b45c730c6d22,
     type: 2}
   _choiceFlowerGrow: {fileID: 114201937558142338, guid: 42509b5369aa9464b8522f93f9a691e8,
