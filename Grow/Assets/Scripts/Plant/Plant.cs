@@ -7,6 +7,7 @@ public class Plant : MonoBehaviour {
     private PlantModule _core;
     private int _light = 0;
     private int _water = 0;
+
     [SerializeField]
     private BranchMenu _branchMenu;
 
@@ -48,18 +49,18 @@ public class Plant : MonoBehaviour {
 
     public BranchMenu BranchMenu { get { return this._branchMenu; } }
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         this._core = GameObject.Instantiate(this._seed);
         this._core.Plant = this;
         this._core.transform.SetParent(this.transform);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
 
-	public void ExperienceEnvironment() {
-	}
+    // Update is called once per frame
+    void Update () {
+    }
+
+    public void ExperienceEnvironment(float temperature, float moisture, float light) {
+    }
+
 }

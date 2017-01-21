@@ -11,9 +11,11 @@ public class World : MonoBehaviour {
     };
 
     int _month;
+    int _soilMoisture;
 
     public GameObject _sunlight;
     public GameObject _plant;
+    private Plant _plantInstance;
     
     [SerializeField]
     private GameObject[] _weatherEffects; // Prefabs for weather effects
@@ -26,6 +28,8 @@ public class World : MonoBehaviour {
     // Use this for initialization
     void Start () {
         _month = 4; // Start in the Spring
+        _soilMoisture = 50;
+        _plantInstance = _plant.GetComponent( typeof(Plant) ) as Plant;
         _weatherEffect = null;
         _adjustToMonth();
     }
@@ -47,8 +51,12 @@ public class World : MonoBehaviour {
     private void _adjustToMonth() {
         _season = _seasons[(int)Season.typeForMonth(_month)];
         _season.ChooseWeather();
-        _adjustLight();
 
+        // Compute environmental factors
+        float light = _adjustLight();
+        _soilMoisture += _season.moistureGain;
+        _soilMoisture = (int)Mathf.Repeat(_soilMoisture * _season.moistureLoss, 100);
+        _plantInstance.ExperienceEnvironment(_season.temperature, _soilMoisture, light);
 
         if (_weatherEffect != null) {
             Destroy(_weatherEffect);
@@ -65,7 +73,7 @@ public class World : MonoBehaviour {
         }
     }
 
-    private void _adjustLight() {
+    private float _adjustLight() {
         // Camera is looking towards increasing Z!
         float height = kSunDistance * Mathf.Sin(Mathf.Deg2Rad * kSunAngles[_month-1]);
         Vector3 position = _plant.transform.position + new Vector3(5.0f, height, kSunDistance);
@@ -74,6 +82,11 @@ public class World : MonoBehaviour {
 
         _sunlight.transform.position = position;
         _sunlight.transform.rotation = rotation;
+
+        float minSunAngle = kSunAngles[0];
+        float maxSunAngle = kSunAngles[5];
+        float sunAngleRange = maxSunAngle - minSunAngle;
+        return (kSunAngles[_month-1] - minSunAngle) / sunAngleRange;
     }
 
     private void _startWeatherEffect(string name) {
