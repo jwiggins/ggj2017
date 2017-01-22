@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4139672275850854}
   - component: {fileID: 114946114184143584}
   m_Layer: 0
-  m_Name: Plant_DoubleSplit
+  m_Name: Plant_DoubleSplit_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -231,8 +231,8 @@ MonoBehaviour:
   _lightGathering: 0
   _waterGathering: 0
   _attachmentPoints:
-  - {fileID: 114658218650537276}
   - {fileID: 114524381139879610}
+  - {fileID: 114658218650537276}
   - {fileID: 114593036988469012}
 --- !u!135 &135074866321082208
 SphereCollider:

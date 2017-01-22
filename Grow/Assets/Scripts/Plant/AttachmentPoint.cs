@@ -187,13 +187,13 @@ public class AttachmentPoint : MonoBehaviour{
             choice.AttachPoint = this;
             result.Add(choice);
         }
-        if (this.RootModule.ForkingAmount <3)
+        if (this.RootModule.ForkingAmount < 2)
         {
             MenuChoiceBranchSplit splitChoice = GameObject.Instantiate(menu._choiceBranchSplit);
             splitChoice.AttachPoint = this;
             result.Add(splitChoice);
         }
-        if (this.RootModule.ForkingAmount < 2)
+        if (this.RootModule.ForkingAmount<3)
         {
             MenuChoiceBranchDoubleSplit splitChoice = GameObject.Instantiate(menu._choiceBranchDoubleSplit);
             splitChoice.AttachPoint = this;
