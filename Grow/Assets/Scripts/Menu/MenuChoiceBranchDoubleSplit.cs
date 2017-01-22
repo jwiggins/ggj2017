@@ -12,17 +12,25 @@ public class MenuChoiceBranchDoubleSplit : MenuChoice {
         if (!(plantModule is StemModule)) return;
         StemModule stemModule = (StemModule)plantModule;
         AttachmentPoint[] oldPoints = stemModule.AttachPoints;
-        StemModule stemModuleTriple = GameObject.Instantiate(plantModule.Plant.StemModuleTriple);
-        stemModuleTriple.Plant = plantModule.Plant;
-        stemModuleTriple.RootPoint = plantModule.RootPoint;
-        stemModuleTriple.transform.SetParent(plantModule.Plant.transform);
+        StemModule stemModuleTriple = GameObject.Instantiate(stemModule.Plant.StemModuleTriple);
+        stemModuleTriple.Plant = stemModule.Plant;
+
+        AttachmentPoint rootPoint = stemModule.RootPoint;
+        stemModule.RootPoint = null;
+        rootPoint.AttachedModule = stemModuleTriple;
+        stemModuleTriple.RootPoint = rootPoint;
+
+        stemModuleTriple.transform.SetParent(stemModule.Plant.transform);
         stemModuleTriple.transform.position = stemModule.transform.position;
         stemModuleTriple.transform.rotation = stemModule.transform.rotation;
         for(int i = 0; i < oldPoints.Length; i++)
         {
-            stemModuleTriple.AttachPoints[i].AttachedModule = oldPoints[i].AttachedModule;
+            PlantModule attachedModule = oldPoints[i].AttachedModule;
+            if (attachedModule == null) continue;
+            attachedModule.RootPoint = stemModuleTriple.AttachPoints[i];
+            stemModuleTriple.AttachPoints[i].AttachedModule = attachedModule;
+            stemModuleTriple.AttachPoints[i].Relocate();
         }
-        stemModule.RootPoint.AttachedModule = stemModuleTriple;
         GameObject.Destroy(stemModule.gameObject);
     }
 }

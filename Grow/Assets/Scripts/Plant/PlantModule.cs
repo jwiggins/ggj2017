@@ -46,9 +46,14 @@ public class PlantModule : MonoBehaviour {
                 foreach(AttachmentPoint attachPoint in stemModule.AttachPoints)
                 {
                     PlantModule attachedModule = attachPoint.AttachedModule;
+                    if (attachedModule == this)
+                    {
+                        throw new System.Exception("Stackoverflow Exception! A prefab has itself as a child.");
+                    }
                     if (attachedModule == null) continue;
                     result.Add(attachedModule);
-                    foreach(PlantModule plantModule in attachedModule.children)
+                    PlantModule[] attachedChildren = attachedModule.children;
+                    foreach(PlantModule plantModule in attachedChildren)
                     {
                         result.Add(plantModule);
                     }

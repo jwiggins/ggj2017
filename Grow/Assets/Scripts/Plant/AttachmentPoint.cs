@@ -96,6 +96,23 @@ public class AttachmentPoint : MonoBehaviour{
         }
     }
 
+    public void Relocate()
+    {
+        if (this.AttachedModule != null)
+        {
+            this.AttachedModule.transform.position = this.transform.position;
+            this.AttachedModule.transform.rotation = this.transform.rotation;
+            if(this.AttachedModule is StemModule)
+            {
+                AttachmentPoint[] attachPoints = ((StemModule)this.AttachedModule).AttachPoints;
+                for(int i = 0; i < attachPoints.Length; i++)
+                {
+                    attachPoints[i].Relocate();
+                }
+            }
+        }
+    }
+
     public PlantModule grow(Plant plant, PlantModule template)
     {
         this._attachedModule = GameObject.Instantiate(template);
@@ -187,13 +204,13 @@ public class AttachmentPoint : MonoBehaviour{
             choice.AttachPoint = this;
             result.Add(choice);
         }
-        if (this.RootModule.ForkingAmount < 2)
+        if (this.RootModule.ForkingAmount < 2 && this.RootModule.RootPoint!=null)
         {
             MenuChoiceBranchSplit splitChoice = GameObject.Instantiate(menu._choiceBranchSplit);
             splitChoice.AttachPoint = this;
             result.Add(splitChoice);
         }
-        if (this.RootModule.ForkingAmount<3)
+        if (this.RootModule.ForkingAmount< 3 && this.RootModule.RootPoint != null)
         {
             MenuChoiceBranchDoubleSplit splitChoice = GameObject.Instantiate(menu._choiceBranchDoubleSplit);
             splitChoice.AttachPoint = this;
