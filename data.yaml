@@ -6,19 +6,19 @@ Object:
     _maxTemperature: 25
     _weathers:
     - _name: Rain
-      _temperature: -0.5
+      _temperature: -0.1
       _moisture: 0
       _probability: 0.45
     - _name: Wind
-      _temperature: -0.25
+      _temperature: -0.05
       _moisture: 0
       _probability: 0.45
     - _name: Drought
-      _temperature: 0.1
+      _temperature: 0.3
       _moisture: -0.75
       _probability: 0.05
     - _name: Snow
-      _temperature: -1
+      _temperature: -0.9
       _moisture: 0
       _probability: 0.05
   - _name: Summer
@@ -26,7 +26,7 @@ Object:
     _maxTemperature: 45
     _weathers:
     - _name: Rain
-      _temperature: 0.2
+      _temperature: 0.15
       _moisture: 0.5
       _probability: 0.35
     - _name: Wind
@@ -38,7 +38,7 @@ Object:
       _moisture: -1
       _probability: 0.29
     - _name: Snow
-      _temperature: -1
+      _temperature: -2
       _moisture: 0.1
       _probability: 0.01
   - _name: Fall
@@ -46,7 +46,7 @@ Object:
     _maxTemperature: 25
     _weathers:
     - _name: Rain
-      _temperature: -0.5
+      _temperature: -0.33
       _moisture: 0.6
       _probability: 0.4
     - _name: Wind
@@ -58,7 +58,7 @@ Object:
       _moisture: -1
       _probability: 0.05
     - _name: Snow
-      _temperature: -1
+      _temperature: -0.9
       _moisture: 0.1
       _probability: 0.15
   - _name: Winter
@@ -66,15 +66,15 @@ Object:
     _maxTemperature: 5
     _weathers:
     - _name: Rain
-      _temperature: 0.5
+      _temperature: 0.35
       _moisture: 0.5
       _probability: 0.2
     - _name: Wind
-      _temperature: 0
+      _temperature: 0.1
       _moisture: -0.25
       _probability: 0.1
     - _name: Drought
-      _temperature: -0.5
+      _temperature: -0.25
       _moisture: -1
       _probability: 0.1
     - _name: Snow
