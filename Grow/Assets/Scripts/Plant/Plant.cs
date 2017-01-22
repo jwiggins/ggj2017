@@ -11,17 +11,19 @@ public class Plant : MonoBehaviour {
     private BranchMenu _branchMenu;
 
     [SerializeField]
-    private SeedModule _seed;
+    private SeedModule[] _seeds;
     [SerializeField]
-    private StemModule _stem;
+    private StemModule[] _stems;
     [SerializeField]
-    private StemModule _stemDouble;
+    private StemModule[] _stemDoubles;
     [SerializeField]
-    private StemModule _stemTriple;
+    private StemModule[] _stemTriples;
     [SerializeField]
-    private LeafModule _leaf;
+    private LeafModule[] _leafs;
     [SerializeField]
-    private FlowerModule _flower;
+    private FlowerModule[] _flowers;
+    [SerializeField]
+    private RootModule[] _roots;
 
     public PlantModule[] children
     {
@@ -36,32 +38,32 @@ public class Plant : MonoBehaviour {
 
     public SeedModule SeedModule
     {
-        get { return this._seed; }
+        get { return this._seeds[Random.Range(0, this._seeds.Length)]; }
     }
 
     public StemModule StemModuleSingle
     {
-        get { return this._stem; }
+        get { return this._stems[Random.Range(0, this._stems.Length)]; }
     }
 
     public StemModule StemModuleDouble
     {
-        get { return this._stemDouble; }
+        get { return this._stemDoubles[Random.Range(0, this._stemDoubles.Length)]; }
     }
 
     public StemModule StemModuleTriple
     {
-        get { return this._stemTriple; }
+        get { return this._stemTriples[Random.Range(0, this._stemTriples.Length)]; }
     }
 
     public LeafModule LeafModule
     {
-        get { return this._leaf; }
+        get { return this._leafs[Random.Range(0, this._leafs.Length)]; }
     }
 
     public FlowerModule FlowerModule
     {
-        get { return this._flower; }
+        get { return this._flowers[Random.Range(0, this._flowers.Length)]; }
     }
 
     public SeedModule RootModule
@@ -78,7 +80,7 @@ public class Plant : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        this._core = GameObject.Instantiate(this._seed);
+        this._core = GameObject.Instantiate(this._seeds[Random.Range(0, this._seeds.Length)]);
         this._core.Plant = this;
         this._core.transform.SetParent(this.transform);
     }
