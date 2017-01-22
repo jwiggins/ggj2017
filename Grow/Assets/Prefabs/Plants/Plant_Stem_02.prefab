@@ -136,8 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d197526169323418dfa81fa8d241e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rootModule: {fileID: 0}
-  _attachedModule: {fileID: 114701481998821664}
+  _rootModule: {fileID: 114701481998821664}
+  _attachedModule: {fileID: 0}
   _thickness: 0
   _blendShapeIndex: 0
 --- !u!135 &135568467414732738

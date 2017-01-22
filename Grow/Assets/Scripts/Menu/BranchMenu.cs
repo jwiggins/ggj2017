@@ -41,14 +41,13 @@ public class BranchMenu : MonoBehaviour {
     private AttachmentPoint _attachPoint;
     private MenuChoice _activeChoice;
 
-    private Camera _camera;
-
     public MenuChoice ActiveChoice
     {
         get { return this._activeChoice; }
-        set {
-            this._activeChoice = value;
+        set
+        {
             this._infoPanel.color = value.GetComponent<Image>().color;
+            this._activeChoice = value;
         }
     }
 
@@ -89,14 +88,9 @@ public class BranchMenu : MonoBehaviour {
         get { return _currentCoroutine; }
     }
 
-    void Start()
-    {
-        this._camera = GameObject.Find("Camera").GetComponent<Camera>();
-    }
-
     void Update()
     {
-        Vector3 position = _camera.WorldToScreenPoint(this.AttachPoint.transform.position);
+        Vector3 position = Camera.main.WorldToScreenPoint(this.AttachPoint.transform.position);
         int menuWidth = 300;
         if (position.x < menuWidth / 2) position.x = menuWidth / 2;
         if (position.x > Screen.width - menuWidth / 2) position.x = Screen.width - menuWidth / 2;
@@ -122,8 +116,8 @@ public class BranchMenu : MonoBehaviour {
     }
     private void zoomOut()
     {
-        if (_currentCoroutine != null) this.AttachPoint.Plant.StopCoroutine(_currentCoroutine);
-        _currentCoroutine = this.AttachPoint.Plant.StartCoroutine(moveCameraTo(ViewAllVector));
+        if(_currentCoroutine==null)
+        _currentCoroutine = this.AttachPoint.Plant.StartCoroutine(moveCameraTo(Camera.main, ViewAllVector));
     }
     private void end()
     {
@@ -149,8 +143,7 @@ public class BranchMenu : MonoBehaviour {
         }
         result._accept.onClick.AddListener(() => { result.accept(); });
         result._cancel.onClick.AddListener(() => { result.cancel(); });
-        if (_currentCoroutine != null) attachmentPoint.Plant.StopCoroutine(_currentCoroutine);
-        _currentCoroutine = attachmentPoint.Plant.StartCoroutine(BranchMenu.moveCameraTo(attachmentPoint.transform.position + new Vector3(0, 0, 1.75f)));
+        _currentCoroutine = attachmentPoint.Plant.StartCoroutine(BranchMenu.moveCameraTo(Camera.main, attachmentPoint.transform.position + new Vector3(0, 0, 1.75f)));
         return result;
     }
 
@@ -167,16 +160,21 @@ public class BranchMenu : MonoBehaviour {
             rectTransform.anchoredPosition = Vector2.zero;
         }
     }
-    private static IEnumerator moveCameraTo(Vector3 targetPosition)
+    private static IEnumerator moveCameraTo(Camera camera, Vector3 targetPosition)
     {
-        Transform cameraTransform = GameObject.Find("Camera").transform;
-        Vector3 startPosition = cameraTransform.position;
+        yield return null;
+        Coroutine currentCoroutine = _currentCoroutine;
+        Vector3 startPosition = camera.transform.position;
         float t = 0;
         float totalTime = 1;
         while (t < totalTime)
         {
+            if (_currentCoroutine != currentCoroutine)
+            {
+                yield break;
+            }
             t += Time.deltaTime;
-            cameraTransform.position = Vector3.Lerp(startPosition, targetPosition, Mathf.SmoothStep(0,1,t));
+            camera.transform.position = Vector3.Lerp(startPosition, targetPosition, Mathf.SmoothStep(0,1,t));
             yield return null;
         }
         _currentCoroutine = null;
