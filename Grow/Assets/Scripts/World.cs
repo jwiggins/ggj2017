@@ -6,10 +6,19 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class World : MonoBehaviour {
-    const float kSunDistance = 10.0f;
+    const float kSunDistance = 50.0f;
     static readonly float[] kSunAngles = {
-        23.0f, 29.0f, 35.0f, 41.0f, 47.0f, 53.0f,
-        53.0f, 47.0f, 41.0f, 35.0f, 29.0f, 23.0f
+        20.0f, 32.0f, 44.0f, 56.0f, 68.0f, 80.0f,
+        80.0f, 68.0f, 56.0f, 44.0f, 32.0f, 20.0f
+    };
+    static readonly int[] kSunReds = {
+        255, 255, 208, 86
+    };
+    static readonly int[] kSunGreens = {
+        222, 244, 138, 206
+    };
+    static readonly int[] kSunBlues = {
+        186, 214, 84, 255
     };
     static readonly string[] kMonths = {
         "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"
@@ -68,6 +77,10 @@ public class World : MonoBehaviour {
                 Destroy(_playingSound);
             _playingSound = Instantiate(_seasonSounds[seasonIndex]);
         }
+        Light sun = _sunlight.GetComponent<Light>();
+        sun.color = new Color(kSunReds[seasonIndex] / 255.0f,
+                              kSunGreens[seasonIndex] / 255.0f,
+                              kSunBlues[seasonIndex] / 255.0f, 1.0f);
 
         // Compute environmental factors
         float light = _adjustLight();
@@ -101,7 +114,7 @@ public class World : MonoBehaviour {
     private float _adjustLight() {
         // Camera is looking towards increasing Z!
         float height = kSunDistance * Mathf.Sin(Mathf.Deg2Rad * kSunAngles[_month-1]);
-        Vector3 position = _plant.transform.position + new Vector3(5.0f, height, kSunDistance);
+        Vector3 position = _plant.transform.position + new Vector3(kSunDistance/3.0f, height, kSunDistance);
         Vector3 relativePos = _plant.transform.position - position;
         Quaternion rotation = Quaternion.LookRotation(relativePos);
 
