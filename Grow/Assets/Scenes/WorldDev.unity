@@ -339,12 +339,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _branchMenu: {fileID: 114151220449995426, guid: 1dca55da9f11fac43a93199ee39a534d,
     type: 2}
-  _seed: {fileID: 114731004987679524, guid: 198db29c5b15e6a4f9241c793ddef235, type: 2}
-  _stem: {fileID: 114041714835870446, guid: e67f99d5888686341b93d6aa86d99481, type: 2}
-  _stemDouble: {fileID: 0}
-  _stemTriple: {fileID: 0}
-  _leaf: {fileID: 0}
-  _flower: {fileID: 0}
+  _seeds:
+  - {fileID: 114731004987679524, guid: 198db29c5b15e6a4f9241c793ddef235, type: 2}
+  _stems:
+  - {fileID: 114041714835870446, guid: e67f99d5888686341b93d6aa86d99481, type: 2}
+  - {fileID: 114701481998821664, guid: 8108ece9233f19142bf4ce538e76ace6, type: 2}
+  - {fileID: 114970394951547836, guid: 2df68c91c7fc6064484257303d8bfec4, type: 2}
+  - {fileID: 114588203635072454, guid: 20cd58e0519f3c84ca8e573dc5c5810c, type: 2}
+  _stemDoubles:
+  - {fileID: 114660841867424974, guid: 85d0702d8738d8347b14e0660274b360, type: 2}
+  _stemTriples:
+  - {fileID: 114946114184143584, guid: 7efdd4a4f2d62ab4e9d971974a19f1ad, type: 2}
+  _leafs: []
+  _flowers: []
+  _roots: []
 --- !u!4 &332719802
 Transform:
   m_ObjectHideFlags: 0
