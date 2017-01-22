@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[System.Serializable]
 public class Season {
     public enum SeasonType
     {
@@ -12,15 +11,10 @@ public class Season {
         FALL,
         WINTER
     }
-    [SerializeField]
-    private string _name;
-    [SerializeField]
+
     private SeasonType _type;
-    [SerializeField]
     private float _minTemperature;
-    [SerializeField]
     private float _maxTemperature;
-    [SerializeField]
     private Weather[] _weathers;
     private Weather _weather;
 

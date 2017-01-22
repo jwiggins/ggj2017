@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
 public class Weather {
     public enum WeatherEnum
     {
@@ -12,21 +11,9 @@ public class Weather {
         SNOW
     }
 
-    [SerializeField]
-    private string _name;
-    [SerializeField]
-    private WeatherEnum _weather;
-    [SerializeField]
-    [Range(0,1)]
-    private float _gravity;
-    [SerializeField]
-    [Range(-1,1)]
+    private WeatherEnum _type;
     private float _temperature;
-    [SerializeField]
-    [Range(-1,1)]
     private float _moisture;
-    [SerializeField]
-    [Range(0,1)]
     private float _probability;
 
     public float moisture {
@@ -45,8 +32,8 @@ public class Weather {
     }
 
     public WeatherEnum type {
-        get { return _weather; }
-        set { _weather = value; }
+        get { return _type; }
+        set { _type = value; }
     }
 
 }

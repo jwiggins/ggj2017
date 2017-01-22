@@ -22,14 +22,13 @@ public class World : MonoBehaviour {
     public GameObject _sunlight;
     public GameObject _plant;
     private Plant _plantInstance;
-    
+
+    private Season[] _seasons; //these are all the seasons
+    private Season _season; //this is the current season
+
     [SerializeField]
     private GameObject[] _weatherEffects; // Prefabs for weather effects
     GameObject _weatherEffect;
-
-    [SerializeField]
-    private Season[] _seasons; //these are all the seasons
-    private Season _season; //this is the current season
 
     // Use this for initialization
     void Start () {
