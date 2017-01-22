@@ -41,6 +41,11 @@ public class BranchMenu : MonoBehaviour {
     private AttachmentPoint _attachPoint;
     private MenuChoice _activeChoice;
 
+    public static BranchMenu CurrentMenu
+    {
+        get { return _currentMenu; }
+    }
+
     public MenuChoice ActiveChoice
     {
         get { return this._activeChoice; }

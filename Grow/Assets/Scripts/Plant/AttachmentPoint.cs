@@ -17,6 +17,54 @@ public class AttachmentPoint : MonoBehaviour{
     [SerializeField]
     private int _blendShapeIndex;
 
+    public List<Transform> Leafs
+    {
+        get
+        {
+            List<Transform> result = new List<Transform>();
+            foreach (Transform child in this.transform)
+            {
+                if (child.name.ToUpper().Contains("LEAF")&&child.transform.childCount>0)
+                {
+                    result.Add(child.GetChild(0));
+                }
+            }
+            return result;
+        }
+    }
+
+    public List<Transform> Flowers
+    {
+        get
+        {
+            List<Transform> result = new List<Transform>();
+            foreach (Transform child in this.transform)
+            {
+                if (child.name.ToUpper().Contains("FLOWER") && child.transform.childCount > 0)
+                {
+                    result.Add(child.GetChild(0));
+                }
+            }
+            return result;
+        }
+    }
+
+    public List<Transform> Fruit
+    {
+        get
+        {
+            List<Transform> result = new List<Transform>();
+            foreach (Transform child in this.transform)
+            {
+                if (child.name.ToUpper().Contains("FLOWER") && child.transform.childCount > 1)
+                {
+                    result.Add(child.GetChild(1));
+                }
+            }
+            return result;
+        }
+    }
+
     bool mouseOver = false;
     #endregion
 
@@ -79,7 +127,7 @@ public class AttachmentPoint : MonoBehaviour{
     
     void OnMouseDown()
     {
-        if (BranchMenu.CurrentCoroutine != null) return;
+        if (BranchMenu.CurrentMenu != null) return;
         this.mouseOver = true;
     }
     
@@ -89,10 +137,10 @@ public class AttachmentPoint : MonoBehaviour{
         {
             if (this.mouseOver)
             {
+                this.mouseOver = false;
                 if (BranchMenu.CurrentCoroutine != null) return;
                 BranchMenu.create(this); //create a BranchMenu for this StemModule
             }
-            this.mouseOver = false;
         }
     }
 
@@ -154,7 +202,13 @@ public class AttachmentPoint : MonoBehaviour{
                 dropChoice.AttachPoint = this;
                 result.Add(dropChoice);
             }
-            else if(this.AttachedModule is LeafModule)
+        }
+        else
+        {
+            List<Transform> leafs = this.Leafs;
+            List<Transform> flowers = this.Flowers;
+            List<Transform> fruit = this.Fruit;
+            if (leafs.Count > 0 && flowers.Count == 0)
             {
                 MenuChoiceLeafDrop dropChoice = GameObject.Instantiate(menu._choiceLeafDrop);
                 dropChoice.AttachPoint = this;
@@ -163,7 +217,7 @@ public class AttachmentPoint : MonoBehaviour{
                 growChoice.AttachPoint = this;
                 result.Add(growChoice);
             }
-            else if(this.AttachedModule is FlowerModule)
+            else if (flowers.Count > 0 && fruit.Count==0)
             {
                 MenuChoiceFlowerDrop dropChoice = GameObject.Instantiate(menu._choiceFlowerDrop);
                 dropChoice.AttachPoint = this;
@@ -172,23 +226,23 @@ public class AttachmentPoint : MonoBehaviour{
                 growChoice.AttachPoint = this;
                 result.Add(growChoice);
             }
-            else if(this.AttachedModule is FruitModule)
+            else if (fruit.Count>0)
             {
                 MenuChoiceFruitDrop dropChoice = GameObject.Instantiate(menu._choiceFruitDrop);
                 dropChoice.AttachPoint = this;
                 result.Add(dropChoice);
             }
-        }
-        else
-        {
-            MenuChoiceBranchGrow branchChoice = GameObject.Instantiate(menu._choiceBranchGrow);
-            branchChoice.AttachPoint = this;
-            branchChoice.Plant = this.Plant;
-            result.Add(branchChoice);
+            else
+            {
+                MenuChoiceBranchGrow branchChoice = GameObject.Instantiate(menu._choiceBranchGrow);
+                branchChoice.AttachPoint = this;
+                branchChoice.Plant = this.Plant;
+                result.Add(branchChoice);
+                MenuChoiceLeafGrow leafChoice = GameObject.Instantiate(menu._choiceLeafGrow);
+                leafChoice.AttachPoint = this;
+                result.Add(leafChoice);
+            }
 
-            MenuChoiceLeafGrow leafChoice = GameObject.Instantiate(menu._choiceLeafGrow);
-            leafChoice.AttachPoint = this;
-            result.Add(leafChoice);
         }
         bool mayGrow = true;
         if (this.RootModule.RootPoint != null)
