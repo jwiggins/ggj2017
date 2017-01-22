@@ -9,6 +9,12 @@ public class Plant : MonoBehaviour {
 
     [SerializeField]
     private BranchMenu _branchMenu;
+    [SerializeField]
+    private GameObject _plantLeaf;
+    [SerializeField]
+    private GameObject _plantFlower;
+    [SerializeField]
+    private GameObject _plantFruit;
 
     [SerializeField]
     private SeedModule[] _seeds;
@@ -34,6 +40,21 @@ public class Plant : MonoBehaviour {
             result.AddRange(this.RootModule.children);
             return result.ToArray();
         }
+    }
+
+    public GameObject PlantLeaf
+    {
+        get { return this._plantLeaf; }
+    }
+
+    public GameObject PlantFlower
+    {
+        get { return this._plantFlower; }
+    }
+
+    public GameObject PlantFruit
+    {
+        get { return this._plantFruit; }
     }
 
     public SeedModule SeedModule
