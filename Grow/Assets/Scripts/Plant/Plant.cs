@@ -100,7 +100,7 @@ public class Plant : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void Awake () {
         this._core = GameObject.Instantiate(this._seeds[Random.Range(0, this._seeds.Length)]);
         this._core.Plant = this;
         this._core.transform.SetParent(this.transform);

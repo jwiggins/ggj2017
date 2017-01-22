@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -96,15 +95,15 @@ public class World : MonoBehaviour {
         }
 
         switch(_season.weatherType) {
-            case Weather.WeatherEnum.SNOW:
-                _startWeatherEffect("Snow");
-                break;
-            case Weather.WeatherEnum.RAIN:
-                _startWeatherEffect("Rain");
-                break;
-            case Weather.WeatherEnum.WIND:
-                _startWeatherEffect("Wind");
-                break;
+            // case Weather.WeatherEnum.SNOW:
+            //     _startWeatherEffect("Snow");
+            //     break;
+            // case Weather.WeatherEnum.RAIN:
+            //     _startWeatherEffect("Rain");
+            //     break;
+            // case Weather.WeatherEnum.WIND:
+            //     _startWeatherEffect("Wind");
+            //     break;
             case Weather.WeatherEnum.DROUGHT:
                 _startWeatherEffect("DustStorm");
                 break;
@@ -131,7 +130,7 @@ public class World : MonoBehaviour {
         GameObject camera = GameObject.Find("Camera");
         foreach (GameObject prefab in _weatherEffects) {
             if (prefab.name == name) {
-                _weatherEffect = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
+                _weatherEffect = Instantiate(prefab);
                 _weatherEffect.transform.SetParent(camera.transform);
             }
         }
