@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 524319043505b594c93e844af5dadad1
-timeCreated: 1484963991
+guid: bf911fcf62971f44594b1bb167013ede
+timeCreated: 1485078300
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,9 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: polySurface1
-    4300002: SM_Env_Terrain_Crosscut
-    4300004: SM_Env_Terrain_CrossCut
+    4300000: SM_Env_Terrain_CrossCut
   materials:
     importMaterials: 1
     materialName: 0
