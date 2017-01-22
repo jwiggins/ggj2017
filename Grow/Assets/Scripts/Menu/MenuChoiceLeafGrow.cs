@@ -15,7 +15,7 @@ public class MenuChoiceLeafGrow : MenuChoice
             leaf.transform.SetParent(transform);
             leaf.transform.localPosition = Vector3.zero;
             leaf.transform.localRotation = Quaternion.identity;
-            float s = 1f;
+            float s = 100f;
             leaf.transform.localScale = new Vector3(s, s, s);
         }
         return;
