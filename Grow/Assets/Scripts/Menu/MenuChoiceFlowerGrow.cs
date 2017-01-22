@@ -15,7 +15,7 @@ public class MenuChoiceFlowerGrow : MenuChoice
             flower.transform.SetParent(transform);
             flower.transform.localPosition = Vector3.zero;
             flower.transform.localRotation = Quaternion.identity;
-            float s = 1f;
+            float s = 2f;
             flower.transform.localScale = new Vector3(s, s, s);
         }
         return;
