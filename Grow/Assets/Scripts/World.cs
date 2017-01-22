@@ -21,6 +21,8 @@ public class World : MonoBehaviour {
 
     public GameObject _sunlight;
     public GameObject _plant;
+    public GameObject[] _seasonSounds; // Prefabs for season music
+    private GameObject _playingSound;
     private Plant _plantInstance;
 
     private Season[] _seasons; //these are all the seasons
@@ -37,6 +39,7 @@ public class World : MonoBehaviour {
         _soilMoisture = 50;
         _plantInstance = _plant.GetComponent( typeof(Plant) ) as Plant;
         _weatherEffect = null;
+        _playingSound = null;
         _adjustToMonth();
     }
 
@@ -55,8 +58,16 @@ public class World : MonoBehaviour {
     }
 
     private void _adjustToMonth() {
-        _season = _seasons[(int)Season.typeForMonth(_month)];
+        Season beforeSeason = _season;
+        int seasonIndex = (int)Season.typeForMonth(_month);
+
+        _season = _seasons[seasonIndex];
         _season.ChooseWeather();
+        if (beforeSeason != _season && _seasonSounds.Length >= 4) {
+            if (_playingSound != null)
+                Destroy(_playingSound);
+            _playingSound = Instantiate(_seasonSounds[seasonIndex]);
+        }
 
         // Compute environmental factors
         float light = _adjustLight();
