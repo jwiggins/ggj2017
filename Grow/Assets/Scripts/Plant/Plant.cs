@@ -104,8 +104,6 @@ public class Plant : MonoBehaviour {
                 return 40;
             case PlantModule.PlantType.LEAF:
                 return 25;
-            case PlantModule.PlantType.SEED:
-                return 15;
             default:
                 break;
         }
